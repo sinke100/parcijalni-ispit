@@ -9,7 +9,8 @@
 
 <body style="padding:40px; width: 600px; margin: auto; text-align: center">
     <h1>Harry Potter i Kamen mudraca</h1>
-    <h2>Siniša Vlahović</h2>
+    <h1>Siniša Vlahović</h1>
+    <h2 id="randomFloat"></h2> <!-- Display the random float value here -->
     <img src="assets/HP1.jpg" title="Harry Potter" lang="en" alt="Harry Potter">
     <p style="text-align: justify;">
         Harry Potter i Kamen mudraca prva je od sedam knjiga iz serijala o Harryju
@@ -21,6 +22,20 @@
         - procjenjuje se da je u svijetu prodana u 107 milijuna primjeraka.
     </p>
 
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/random',
+                method: 'GET',
+                success: function (response) {
+                    $('#randomFloat').text('Random postotak is ' + (response.randomFloat * 100).toFixed(2) + ' %');
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            });
+        });
+    </script>
 
 </body>
 
